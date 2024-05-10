@@ -1,0 +1,88 @@
+<div class="top-navbar">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col d-flex justify-content-start align-items-center">
+        <div class="mx-3 title" routerLink="/">Manualidades y Crochet</div>
+      </div>
+      <div class="col d-flex justify-content-center align-items-center">
+        <img class="top" src="../assets/logo.webp" alt="Logo" />
+      </div>
+      <div
+        *ngIf="!currentUser"
+        class="col d-flex justify-content-end align-items-center"
+      >
+        <li
+          class="list-group-item under text-center auth"
+          [routerLink]="'/auth/login'"
+        >
+          Iniciar Sesión
+        </li>
+      </div>
+      <div
+        *ngIf="currentUser"
+        class="col d-flex justify-content-end align-items-center"
+      >
+        <a
+          *ngIf="currentUser"
+          class="list-group-item text-center auth"
+          routerLink="/admin"
+        >
+          Admin
+        </a>
+        <a
+          class="list-group-item text-center auth"
+          (click)="logout()"
+          routerLink="/"
+        >
+          Cerrar Sesión
+        </a>
+      </div>
+    </div>
+    <div
+      class="row spacer top d-flex align-items-center"
+      *ngIf="page === 'admin'"
+    >
+      <div class="col-5 col-sm-5 col-md-3 col-lg-2">
+        <li class="list-group-item text-center under" routerLink="/admin">
+          Manualidades
+        </li>
+      </div>
+    </div>
+  </div>
+  <div class="spacer top"></div>
+</div>
+
+<div class="content">
+  <app-common-background></app-common-background>
+  <router-outlet></router-outlet>
+</div>
+
+<div class="bottom-navbar">
+  <div class="spacer bottom"></div>
+  <div class="container">
+    <div class="row m-3 flex align-items-center">
+      <div class="col-1 text-start">
+        <a
+          href="https://www.linkedin.com/in/%C3%A1ngel-manuel-pereira-rodr%C3%ADguez-009730253/"
+        >
+          <img
+            class="bottom"
+            src="../assets/linkedin-icon-2.svg"
+            alt="Linkedin"
+          />
+        </a>
+      </div>
+      <div class="col-10 text-center">
+        <b
+          ><p>© 2024</p>
+          <p>Ángel Pereira. Todos los derechos reservados.</p></b
+        >
+      </div>
+      <div class="col-1 text-end">
+        <a href="https://github.com/AngelPereiraR">
+          <img class="bottom" src="../assets/github-icon-1.svg" alt="GitHub" />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

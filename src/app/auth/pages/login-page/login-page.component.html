@@ -1,0 +1,71 @@
+<form
+  [formGroup]="myForm"
+  (ngSubmit)="login()"
+  class="login100-form"
+  autocomplete="off"
+>
+  <span class="login100-form-title pb-5"> Iniciar Sesión </span>
+
+  <div class="wrap-input100 mb-3">
+    <span class="label-input100">Correo</span>
+    <input
+      class="input100"
+      type="email"
+      formControlName="email"
+      placeholder="Correo electrónico"
+    />
+    <span class="focus-input100"></span>
+  </div>
+
+  <div class="wrap-input100">
+    <span class="label-input100">Contraseña</span>
+    <div class="input-group">
+      <input
+        class="input100"
+        type="{{ showPassword ? 'text' : 'password' }}"
+        formControlName="password"
+        placeholder="Ingrese su contraseña"
+      />
+      <span class="focus-input100"></span>
+      <i
+        class="fa"
+        [ngClass]="{ 'fa-eye': !showPassword, 'fa-eye-slash': showPassword }"
+        (click)="togglePasswordVisibility()"
+      ></i>
+    </div>
+  </div>
+
+  <div class="pt-3"></div>
+
+  <div class="container-login100-form-btn">
+    <div class="wrap-login100-form-btn">
+      <div class="login100-form-bgbtn"></div>
+      <button
+        *ngIf="!loading"
+        class="login100-form-btn"
+        [disabled]="myForm.invalid"
+        type="submit"
+      >
+        Iniciar sesión
+      </button>
+      <button
+        *ngIf="loading"
+        class="login100-form-btn"
+        [disabled]="true"
+        type="submit"
+      >
+        <spinner></spinner>
+      </button>
+    </div>
+  </div>
+
+  <div class="flex-col-c pt-3">
+
+    <div class="row d-flex justify-content-between">
+
+      <div class="col-12">
+        <a routerLink="/" class="txt2"> VOLVER </a>
+      </div>
+    </div>
+  </div>
+</form>

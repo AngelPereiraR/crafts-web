@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <form [formGroup]="myForm" (ngSubmit)="addCraft()" class="login100-form" autocomplete="off">
+
+    <span class="login100-form-title py-5">
+      Añadir elemento
+    </span>
+
+    <div class="wrap-input100 mb-3">
+      <span class="label-input100">Nombre</span>
+      <input type="text" formControlName="name" class="form-control" />
+      <span class="focus-input100"></span>
+    </div>
+
+    <div class="wrap-input100 mb-3">
+      <span class="label-input100">Descripción</span>
+      <textarea formControlName="description" class="form-control"></textarea>
+      <span class="focus-input100"></span>
+    </div>
+
+    <div class="wrap-input100 mb-3">
+      <span class="label-input100">Imagen</span>
+      <input type="file" formControlName="file" (change)="onFileSelected($event)" class="form-control" accept="image/*" />
+    </div>
+
+    <div class="pt-3"></div>
+
+    <div class="container-login100-form-btn">
+      <div class="wrap-login100-form-btn">
+        <div class="login100-form-bgbtn"></div>
+        <button *ngIf="!loading" class="login100-form-btn" [disabled]="myForm.invalid" type="submit">
+          Añadir
+        </button>
+        <button *ngIf="loading" class="login100-form-btn" [disabled]="true" type="submit">
+          <spinner></spinner>
+        </button>
+      </div>
+    </div>
+
+    <div class="flex-col-c p-4">
+      <div class="row d-flex justify-content-between">
+        <div class="col-4">
+          <a routerLink="/admin" class="txt2">
+            VOLVER
+          </a>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

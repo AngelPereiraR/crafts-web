@@ -1,0 +1,149 @@
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 3px solid black;
+}
+
+thead th:nth-child(1) {
+  width: 5%;
+}
+
+thead th:nth-child(2) {
+  width: 20%;
+}
+
+thead th:nth-child(3) {
+  width: 30%;
+}
+
+thead th:nth-child(4) {
+  width: 15%;
+}
+
+thead th:nth-child(5) {
+  width: 25%;
+}
+
+thead {
+  background-color: black;
+  color: white;
+}
+
+tbody:nth-child(odd) tr:nth-child(odd) {
+  background-color: gray;
+  color: black;
+}
+
+tbody:nth-child(odd) tr:nth-child(even) {
+  background-color: white;
+  color: black;
+}
+
+tbody:nth-child(even) tr:nth-child(odd) {
+  background-color: white;
+  color: black;
+}
+tbody:nth-child(even) tr:nth-child(even) {
+  background-color: gray;
+  color: black;
+}
+
+th,
+td {
+  padding: 20px;
+}
+
+thead th {
+  letter-spacing: 2px;
+  @media (min-width: 80em) {
+    font-size: 18px;
+  }
+
+  @media (min-width: 46em) and (max-width: 80em) {
+    font-size: 13px;
+  }
+
+  @media (max-width: 46em) {
+    font-size: 8px;
+  }
+}
+
+tbody td,
+a {
+  letter-spacing: 1px;
+  @media (min-width: 80em) {
+    font-size: 14px;
+  }
+
+  @media (min-width: 46em) and (max-width: 80em) {
+    font-size: 11px;
+  }
+
+  @media (max-width: 46em) {
+    font-size: 8px;
+  }
+}
+
+tbody td,
+thead th {
+  text-align: center;
+}
+
+h1 {
+  font-family: Minecraft;
+  color: whitesmoke;
+}
+
+button {
+  border-radius: 50%;
+  align-items: center;
+
+  @media (min-width: 80em) {
+    height: 30px;
+    width: 45px;
+  }
+
+  @media (min-width: 46em) and (max-width: 80em) {
+    height: 30px;
+    width: 45px;
+  }
+
+  @media (max-width: 46em) {
+    height: 20px;
+    width: 25px;
+  }
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 5px;
+    padding: 6px 11px;
+    cursor: pointer;
+    background-color: #ffffff;
+  }
+
+  button.up {
+    margin-top: 0px;
+  }
+
+  button.botton {
+    margin-top: 30px;
+  }
+
+  button.selected {
+    background-color: #000000;
+    color: #fff;
+  }
+}
+.truncate {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

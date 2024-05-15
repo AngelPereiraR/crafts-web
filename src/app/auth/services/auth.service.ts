@@ -31,15 +31,12 @@ export class AuthService {
   }
 
   private setAuthentication(
-    id: number,
-    name: string,
-    email: string,
-    password: string,
+    user: User,
     token: string
   ): boolean {
     this._authStatus.set(AuthStatus.authenticated);
     localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify({ id: id, name: name, email: email, password: password }));
+    localStorage.setItem('user', JSON.stringify({ user }));
     this.currentUser = JSON.parse(localStorage.getItem('user')!);
 
     return true;
@@ -78,8 +75,8 @@ export class AuthService {
     const body = { email, password };
 
     return this.http.post<LoginResponse>(url, body).pipe(
-      map(({ _id, name, email, password, token }) => {
-        this.setAuthentication(_id, name, email, password, token);
+      map(({ user, token }) => {
+        this.setAuthentication(user, token);
         Swal.fire(
           'Inicio de sesión',
           `Sea bienvenid@ administrador/a ${name}.`,
@@ -87,7 +84,7 @@ export class AuthService {
         );
         this.router.navigateByUrl('/admin');
 
-        return { _id, name, email };
+        return user;
       }),
       catchError((err) => throwError(() => err.error.message))
     );
@@ -104,8 +101,8 @@ export class AuthService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     return this.http.get<CheckTokenResponse>(url, { headers }).pipe(
-      map(({ _id, name, email, password, token }) => {
-        this.setAuthentication( _id, name, email, password, token);
+      map(({ user, token }) => {
+        this.setAuthentication( user, token);
       }),
       catchError(() => {
         this.logout();

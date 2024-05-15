@@ -1,5 +1,5 @@
 export interface Craft {
-  _id: string;
+  id: string;
   name: string;
   description: string;
   url: string;

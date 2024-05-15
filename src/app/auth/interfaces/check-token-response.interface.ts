@@ -1,7 +1,6 @@
+import { User } from "./user.interface";
+
 export interface CheckTokenResponse {
-  _id: number;
-  name: string;
-  email: string;
-  password: string;
+  user: User;
   token: string;
 }

@@ -7,12 +7,18 @@ import { CommonBackgroundComponent } from './components/common-background/common
 import { CraftsLayoutComponent } from './layouts/crafts-layout/crafts-layout.component';
 import { CraftsRoutingModule } from './crafts-routing.module';
 import { InfoComponent } from './pages/info/info.component';
+import { CraftTableComponent } from './pages/admin/craft/craft-table/craft-table.component';
+import { CraftAddComponent } from './pages/admin/craft/craft-add/craft-add.component';
+import { CraftEditComponent } from './pages/admin/craft/craft-edit/craft-edit.component';
 
 
 @NgModule({
   declarations: [
     CommonBackgroundComponent,
     CraftsLayoutComponent,
+    CraftTableComponent,
+    CraftAddComponent,
+    CraftEditComponent,
     InfoComponent
   ],
   imports: [

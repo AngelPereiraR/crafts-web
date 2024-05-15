@@ -1,0 +1,90 @@
+<div class="pt-4 px-5">
+  <h1 *ngIf="!firstLoading && totalCrafts()! > 0">
+    Hay {{ totalCrafts() }} elemento/s
+  </h1>
+  <h1 *ngIf="!firstLoading && totalCrafts()! === 0">No hay elementos</h1>
+  <h1 *ngIf="firstLoading">Cargando elemento/s</h1>
+
+  <div class="pagination" *ngIf="!firstLoading">
+    <button class="up" (click)="getCrafts(position() - 1)">◄</button>
+    <button
+      class="up"
+      *ngFor="let pageNumber of getPageNumbers()"
+      (click)="getCrafts(pageNumber - 1)"
+      [ngClass]="{ selected: pageNumber === position() + 1 }"
+    >
+      {{ pageNumber }}
+    </button>
+    <button class="up" (click)="getCrafts(position() + 1)">►</button>
+  </div>
+  <table *ngIf="!firstLoading">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>URL</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let craft of crafts(); let index = index">
+        <td>{{ index + 1 + position() * 10 }}</td>
+        <td>
+          <span class="truncate" [title]="craft.name">{{ craft.name }}</span>
+        </td>
+        <td>
+          <span class="truncate" [title]="craft.description">{{ craft.description }}</span>
+        </td>
+        <td>
+          <a [href]="craft.url" class="truncate" [title]="craft.url">{{ craft.url }}</a>
+        </td>
+        <td>
+          <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-4 col-lg-3">
+              <button
+                *ngIf="!loading"
+                (click)="editNavigate(craft.id)"
+                class="fa-solid fa-edit fa-lg m-2 p-2"
+                title="Editar elemento"
+                style="background-color: green"
+              ></button>
+              <spinner *ngIf="loading" title="Editar elemento"></spinner>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3">
+              <button
+                *ngIf="!loading"
+                (click)="removeCraft(craft.id)"
+                class="fa-solid fa-trash fa-lg m-2 p-2"
+                title="Eliminar elemento"
+                style="background-color: red"
+              ></button>
+              <spinner *ngIf="loading" title="Eliminar elemento"></spinner>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination" *ngIf="!firstLoading">
+    <button class="bottom" (click)="getCrafts(position() - 1)">◄</button>
+    <button
+      class="bottom"
+      *ngFor="let pageNumber of getPageNumbers()"
+      (click)="getCrafts(pageNumber - 1)"
+      [ngClass]="{ selected: pageNumber === position() + 1 }"
+    >
+      {{ pageNumber }}
+    </button>
+    <button class="bottom" (click)="getCrafts(position() + 1)">►</button>
+  </div>
+  <spinner *ngIf="firstLoading"></spinner>
+  <div class="m-2" *ngIf="!firstLoading">
+    <button
+      routerLink="/admin/add"
+      class="fa-solid fa-plus m-2 p-2"
+      title="Añadir equipo"
+      style="background-color: blue; color: white"
+    ></button>
+  </div>
+</div>

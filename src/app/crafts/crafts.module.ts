@@ -10,6 +10,7 @@ import { InfoComponent } from './pages/info/info.component';
 import { CraftTableComponent } from './pages/admin/craft/craft-table/craft-table.component';
 import { CraftAddComponent } from './pages/admin/craft/craft-add/craft-add.component';
 import { CraftEditComponent } from './pages/admin/craft/craft-edit/craft-edit.component';
+import { NgxMasonryModule } from 'ngx-masonry';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { CraftEditComponent } from './pages/admin/craft/craft-edit/craft-edit.co
     MaterialModule,
     ReactiveFormsModule,
     SpinnerComponent,
+    NgxMasonryModule,
   ],
 })
 export class CraftsModule {}

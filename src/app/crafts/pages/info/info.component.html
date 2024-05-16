@@ -1,1 +1,27 @@
-<h1>Hola</h1>
+<div class="container mt-2">
+  <h1 class="mb-4 text-center text-white">Creaciones artísticas de Esperod</h1>
+
+  <div *ngIf="loading">
+    <spinner></spinner>
+  </div>
+
+  <ngx-masonry>
+    <div ngxMasonryItem class="col-md-3 px-2 mb-4" *ngFor="let craft of crafts()">
+      <div class="card">
+        <img
+          [src]="craft.url"
+          alt="{{ craft.name }} Image"
+          class="card-img-top img-fluid"
+        />
+        <div class="card-body">
+          <h2 class="card-title">{{ craft.name }}</h2>
+          <p class="card-text">{{ craft.description }}</p>
+        </div>
+      </div>
+    </div>
+  </ngx-masonry>
+
+  <h2 class="text-center text-white" *ngIf="!crafts && !loading">
+    No se encontraron creaciones.
+  </h2>
+</div>

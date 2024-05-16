@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 @Component({
   templateUrl: './craft-table.component.html',
-  styleUrls: ['./craft-table.component.css'],
+  styleUrls: ['./craft-table.component.scss'],
 })
 export class CraftTableComponent implements OnInit, OnDestroy, OnChanges {
   private craftsService = inject(CraftsService);
